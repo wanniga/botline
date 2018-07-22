@@ -12,13 +12,10 @@ function timechk (){
     var h = thtime().h
     var m = thtime().m
     var s = thtime().s
-    
+
   console.log(h+' : '+m+' : '+s)
   alert1()
   alert2()
-
-
-
 }
 
 function alert1() {
@@ -32,7 +29,6 @@ function alert1() {
   if (m == 0 && s <= 10 ){
     sendText ()
     }
-
 }
 
 
@@ -48,7 +44,6 @@ function alert2(){
     sendText15 ()
     }
 
- 
 }
 
 
