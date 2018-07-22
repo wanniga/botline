@@ -14,14 +14,14 @@ function timechk (){
     var s = thtime().s
     
   console.log(h+' : '+m+' : '+s)
-  aler1()
-  aler2()
+  alert1()
+  alert2()
 
 
 
 }
 
-function aler1() {
+function alert1() {
   var h = thtime().h
   var m = thtime().m
   var s = thtime().s
@@ -36,7 +36,7 @@ function aler1() {
 }
 
 
-function aler2(){
+function alert2(){
   var h = thtime().h
   var m = thtime().m
   var s = thtime().s
