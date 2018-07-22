@@ -26,6 +26,9 @@ function aler1() {
   var m = thtime().m
   var s = thtime().s
 
+  if (m == 30 && s <= 10 ){
+    sendText ()
+    } 
   if (m == 0 && s <= 10 ){
     sendText ()
     }
@@ -37,10 +40,14 @@ function aler2(){
   var h = thtime().h
   var m = thtime().m
   var s = thtime().s
-
+    
+  if (m == 15 && s <= 10 ){
+    sendText15 ()
+    }
   if (m == 45 && s <= 10 ){
     sendText15 ()
     }
+
  
 }
 
