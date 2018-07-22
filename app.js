@@ -66,7 +66,7 @@ function sendText () {
   request({
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer {process.env.ACCESS_TOKEN}'
+      'Authorization': 'Bearer {"R0T0NJwEn9hvSNLIAH5gVH/LT0MIm34I4jhl5xaeXSX7fyrpbBvKm6NfqaTI82/549CVsa72KQZtE4UFMf4AHjQvIBOIKiocSUjgc8KJKvFWKtkxPs6z3I2qmXEK7xRqVjiH88EMowxt5bT3RHzBzAdB04t89/1O/w1cDnyilFU="}'
     },
     url: 'https://api.line.me/v2/bot/message/push',
     method: 'POST',
@@ -93,7 +93,7 @@ function sendText15 () {
   request({
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer {process.env.ACCESS_TOKEN}'
+      'Authorization': 'Bearer {"R0T0NJwEn9hvSNLIAH5gVH/LT0MIm34I4jhl5xaeXSX7fyrpbBvKm6NfqaTI82/549CVsa72KQZtE4UFMf4AHjQvIBOIKiocSUjgc8KJKvFWKtkxPs6z3I2qmXEK7xRqVjiH88EMowxt5bT3RHzBzAdB04t89/1O/w1cDnyilFU="}'
     },
     url: 'https://api.line.me/v2/bot/message/push',
     method: 'POST',
