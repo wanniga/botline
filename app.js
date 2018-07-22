@@ -66,7 +66,7 @@ function sendText () {
   request({
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer {"process.env.Channelaccesstoken"}'
+      'Authorization': 'Bearer {process.env.Channelaccesstoken}'
     },
     url: 'https://api.line.me/v2/bot/message/push',
     method: 'POST',
@@ -93,7 +93,7 @@ function sendText15 () {
   request({
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer {"process.env.Channelaccesstoken"}'
+      'Authorization': 'Bearer {process.env.Channelaccesstoken}'
     },
     url: 'https://api.line.me/v2/bot/message/push',
     method: 'POST',
