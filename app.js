@@ -1,104 +1,75 @@
 var request = require('request')
 const thtime = require("./thtime")
 
-var sender = process.env.GROUPID
+var TOKEN = process.env.BOT_TOKEN
 
-var deley = 10000
+setInterval(() => timechk(), 10000);
 
-setInterval(()=>timechk (), deley);
+function timechk() {
+    aler1()
+    aler2()
+}
 
-
-function timechk (){
+function aler1() {
     var h = thtime().h
     var m = thtime().m
     var s = thtime().s
 
-  console.log(h+' : '+m+' : '+s)
-  alert1()
-  alert2()
-}
-
-function alert1() {
-  var h = thtime().h
-  var m = thtime().m
-  var s = thtime().s
-
-  if (m == 30 && s <= 10 ){
-    sendText ()
-    } 
-  if (m == 0 && s <= 10 ){
-    sendText ()
-    }
-}
-
-
-function alert2(){
-  var h = thtime().h
-  var m = thtime().m
-  var s = thtime().s
-    
-  if (m == 15 && s <= 10 ){
-    sendText15 ()
-    }
-  if (m == 45 && s <= 10 ){
-    sendText15 ()
-    }
+    if (m == 0 && s <= 10) { sendText() }                   //แก้เวลาตรงนี้ สำหรับข้อความ "บอสโลกเกิดแล้ว"  แจ้งเตือน .00 น
+    if (h == 17 && m == 0 && s <= 10) { sendText() }        //แจ้งเตือนตอนเวลา 17.00 น
 
 }
 
+function aler2() {
+    var h = thtime().h
+    var m = thtime().m
+    var s = thtime().s
 
+    if (m == 45 && s <= 10) { sendText15() }                //แก้เวลาตรงนี้ สำหรับข้อความ "อีก 15 บอสโลกเกิด"   แจ้งเตือน .45 น
+    if (h == 16 && m == 45 && s <= 10) { sendText15() }     //แจ้งเตือนตอนเวลา 16.45 น
 
-function sendText () {
-  let data = {
-    to: sender,
-    messages: [
-      {
-        type: 'text',
-        text: 'บอสโลกเกิดแล้ววววววววว'
-      }
-    ]
-  }
-  request({
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer {"R0T0NJwEn9hvSNLIAH5gVH/LT0MIm34I4jhl5xaeXSX7fyrpbBvKm6NfqaTI82/549CVsa72KQZtE4UFMf4AHjQvIBOIKiocSUjgc8KJKvFWKtkxPs6z3I2qmXEK7xRqVjiH88EMowxt5bT3RHzBzAdB04t89/1O/w1cDnyilFU="}'
-    },
-    url: 'https://api.line.me/v2/bot/message/push',
-    method: 'POST',
-    body: data,
-    json: true
-  }, function (err, res, body) {
-    if (err) console.log('error')
-    if (res) console.log('success')
-    if (body) console.log(body)
-  })
 }
 
-
-function sendText15 () {
-  let data = {
-    to: sender,
-    messages: [
-      {
-        type: 'text',
-        text: 'อีก 15 นาที บอสโลกเกิด'
-      }
-    ]
-  }
-  request({
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer {"R0T0NJwEn9hvSNLIAH5gVH/LT0MIm34I4jhl5xaeXSX7fyrpbBvKm6NfqaTI82/549CVsa72KQZtE4UFMf4AHjQvIBOIKiocSUjgc8KJKvFWKtkxPs6z3I2qmXEK7xRqVjiH88EMowxt5bT3RHzBzAdB04t89/1O/w1cDnyilFU="}'
-    },
-    url: 'https://api.line.me/v2/bot/message/push',
-    method: 'POST',
-    body: data,
-    json: true
-  }, function (err, res, body) {
-    if (err) console.log('error')
-    if (res) console.log('success')
-    if (body) console.log(body)
-  })
+function sendText() {
+    request({
+        method: 'POST',
+        uri: 'https://notify-api.line.me/api/notify',
+        header: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        auth: {
+            bearer: TOKEN, //token
+        },
+        form: {
+            message: 'บอสโลกเกิดแล้ววววววว', //ข้อความที่จะส่ง
+        },
+    }, (err, httpResponse, body) => {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log(body)
+        }
+    })
 }
 
-
+function sendText15() {
+    request({
+        method: 'POST',
+        uri: 'https://notify-api.line.me/api/notify',
+        header: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        auth: {
+            bearer: TOKEN, //token
+        },
+        form: {
+            message: 'อีก 15 นาที บอสโลกเกิด', //ข้อความที่จะส่ง
+        },
+    }, (err, httpResponse, body) => {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log(body)
+        }
+    })
+}
