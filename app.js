@@ -1,6 +1,5 @@
 var request = require('request')
 const thtime = require("./thtime")
-const chktime = require("./chktime")
 
 var sender = 'C2415ab1d85443d9cb3bbd5009337a056'
 
